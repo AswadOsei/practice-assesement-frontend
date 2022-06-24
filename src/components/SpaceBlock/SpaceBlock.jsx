@@ -8,7 +8,7 @@ export default function SpaceBlock(props) {
         <h4>{props.title} </h4>
         <p> {props.description}</p>
         <button className="button">
-          <Link to={"/:id"}>Visit Space</Link>
+          <Link to={`/${props.id}`}>Visit Space</Link>
         </button>
       </div>
     </div>

@@ -8,6 +8,8 @@ import MessageBox from "./components/MessageBox";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Spaces from "./pages/Spaces/Spaces";
+import SpaceDetailsPage from "./pages/SpaceDetailsPage/SpaceDetailsPage";
+import MySpacePage from "./pages/MySpace/MySpacePage";
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
@@ -27,7 +29,9 @@ function App() {
       <MessageBox />
       {isLoading ? <Loading /> : null}
       <Routes>
+        <Route path="/spaces/myspace" element={<MySpacePage />} />
         <Route path="/" element={<Spaces />} />
+        <Route path="/:id" element={<SpaceDetailsPage />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
       </Routes>

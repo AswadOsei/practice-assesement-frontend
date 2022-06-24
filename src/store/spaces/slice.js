@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   spaces: [],
-  // spaceDetails: {} || null
+  spaceDetails: null,
 };
 
 export const spaceSlice = createSlice({
@@ -10,11 +10,20 @@ export const spaceSlice = createSlice({
   initialState,
   reducers: {
     spaceFetched: (state, action) => {
-      state.spaces = [...state.spaces, ...action.payload];
+      state.spaces = [...action.payload];
+    },
+    spaceDetailsFetched: (state, action) => {
+      state.spaceDetails = { ...action.payload };
     },
   },
 });
 
-export const { spaceFetched } = spaceSlice.actions;
+export const { spaceFetched, spaceDetailsFetched } = spaceSlice.actions;
 
 export default spaceSlice.reducer;
+
+// reducers: {
+//   fetchedAllSpaces: (state, action) => {
+//     state.allSpaces = [...action.payload];
+//   },
+// },

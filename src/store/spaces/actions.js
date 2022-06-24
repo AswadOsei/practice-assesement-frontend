@@ -1,5 +1,5 @@
 import axios from "axios";
-import { spaceFetched } from "./slice";
+import { spaceFetched, spaceDetailsFetched } from "./slice";
 import { apiUrl } from "../../config/constants";
 
 export async function fetchSpaces(dispatch, getState) {
@@ -7,9 +7,23 @@ export async function fetchSpaces(dispatch, getState) {
     const response = await axios.get(`${apiUrl}/spaces`);
 
     const spaces = response.data;
-    console.log("do i get spaces?", spaces);
+    // console.log("do i get spaces?", spaces);
     dispatch(spaceFetched(spaces));
   } catch (e) {
     console.log(e.message);
   }
+}
+
+export function fetchSpaceDetails(id) {
+  return async function stories(dispatch, getState) {
+    try {
+      const response = await axios.get(`${apiUrl}/spaces/${id}`);
+
+      const spaceDetails = response.data;
+      console.log("do i get spacesDetails?", spaceDetails);
+      dispatch(spaceDetailsFetched(spaceDetails));
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
 }

@@ -12,6 +12,10 @@ export default function Navigation() {
   const token = useSelector(selectToken);
 
   const loginLogoutControls = token ? <LoggedIn /> : <LoggedOut />;
+  //create a link that only appears when logged in
+  const mySpaceControls = token ? (
+    <NavbarItem path={"/spaces/myspace"} linkText="My Space" />
+  ) : null;
 
   return (
     <Navbar bg="light" expand="lg">
@@ -23,6 +27,8 @@ export default function Navigation() {
         <Nav style={{ width: "100%" }} fill>
           <NavbarItem path="/" linkText="Home" />
           <NavbarItem path="/other" linkText="Other" />
+          {/* call the function to render on the page */}
+          {mySpaceControls}
           {loginLogoutControls}
         </Nav>
       </Navbar.Collapse>

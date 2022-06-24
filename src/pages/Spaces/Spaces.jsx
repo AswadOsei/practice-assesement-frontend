@@ -10,7 +10,7 @@ export default function Spaces() {
   const dispatch = useDispatch();
   const spaces = useSelector(selectSpaces);
 
-  console.log("Are we getting there?", spaces);
+  // console.log("Are we getting there?", spaces);
   useEffect(() => {
     dispatch(fetchSpaces);
   }, [dispatch]);
@@ -20,9 +20,12 @@ export default function Spaces() {
       {spaces.map((space) => {
         return (
           <SpaceBlock
+            color={space.color}
+            backgroundcolor={space.backgroundcolor}
             key={space.id}
             title={space.title}
             description={space.description}
+            id={space.id}
           />
         );
       })}
